@@ -39,10 +39,6 @@ You will need a [Python](https://www.python.org/downloads/) and [pip](https://pi
 ```bash
 git clone https://github.com/san-nyan/ProjectBabble && cd ProjectBabble/BabbleApp
 ```
-or
-```bash
-git clone --branch <branch> https://github.com/san-nyan/ProjectBabble && cd ProjectBabble/BabbleApp
-```
 
 ##### Make a venv and activate it:
 ```bash
