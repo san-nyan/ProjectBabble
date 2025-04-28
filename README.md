@@ -1,48 +1,77 @@
-![Babble Logo](https://github.com/Project-Babble/ProjectBabble/blob/6f09c3b091bff996a1ec543e1ac1050a15a636af/Babble.png)
+![Babble Logo](https://github.com/san-nyan/images/blob/main/Babble.png?raw=true)
 
 <h3 align="center">
-Project Babble is a source first mouth tracking project designed to work with any VR headset. We strive to make our models robust to different lighting, cameras, image qualities and facial structures!
+This is san-nyan's fork of <a href="https://github.com/Project-Babble/ProjectBabble">Project Babble</a>
 </h3>
 
-## Interested in selling babble hardware?
-By defualt Project Babble is under a non-commerical license! Please contact us at projectbabblevr@gmail.com to obtain a commercial license!
+### The current version this supports is 2.0.7 on the `main` branch and 2.1.0 RC3 on the `autocalibrator` branch
 
-## Table of Contents
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Links](#links)
-  
-## Features
-- 100% free and source available! 🌟
-- Fast and robust! 🚀
-- Works with existing blendshape standards! ⚙️
-- Constantly updated and modified! 🔧
+---
+
+## Changes
+
+- Muted sound effects because they were insanely loud on my system
+- Updated requirements.txt to work on linux
+- Changed UI colors because I can and I wanted to
+
+---
+
+## Pros
+
+- Your ears will not die if you use Arch Linux
+- Fancy colors wow babble discord server "why does your app look like that"
+- If you use this you are 14% cooler
+- You can dm me on discord (@__san) for support cause I will think you are 14% cooler instead of being intimidated by messaging a giant discord server
+
+## Cons
+- I dont know how to use github but someday I will figure it out so I can keep this updated
+
+---
 
 ## Installation
-### Windows
-Head to the releases section and [download the latest installer](https://github.com/Project-Babble/ProjectBabble/releases/latest).
 
-### MacOS and Linux
-Install `git`, `curl` and a version of `python` (between `3.8` and `3.12`) for your distro.
+#### The only official way to use this fork is by building it from source
 
-Then, copy paste and run the following script into the terminal of your choice:
+You will need a [Python](https://www.python.org/downloads/) and [pip](https://pip.pypa.io/en/stable/installation/)
 
-#### For the latest commit:
-
+##### First clone the repo (or the branch you want) and cd:
 ```bash
-bash -c "$(curl -fsSL https://gist.githubusercontent.com/dfgHiatus/e1bce63cd6be1e8645c3b3adfd5b71a6/raw/26561da3b2bcf738f580176229e4853c18ddf554/project-babble-installer-latest.sh)"
+git clone https://github.com/san-nyan/ProjectBabble && cd ProjectBabble/BabbleApp
+```
+or
+```bash
+git clone --branch <branch> https://github.com/san-nyan/ProjectBabble && cd ProjectBabble/BabbleApp
 ```
 
-#### For the latest tagged release:
-
+##### Make a venv and activate it:
 ```bash
-bash -c "$(curl -fsSL https://gist.githubusercontent.com/dfgHiatus/a92a3caae24c1bfab1c7544537a654c5/raw/63573d5c882b4152c9434b9dd4bc888573fe9e98/project-babble-installer-tagged.sh)"
+python -m venv venv && source venv/bin/activate
 ```
 
-Once it's finished installing, you can update and run the Babble app by typing `babble-app` into your terminal. You *should* also be able to run the Windows executable through Wine!
+##### Install the requirements for your system:
+```bash
+pip install -r requirements-windows.txt
+```
+or
+```bash
+pip install -r requirements-linux.txt
+```
 
-*Sometimes, the update script can error out if there are updates to pull from git. Fear not, re-rerunning the script in most cases fixes things.*
+##### Now you can run the app like this:
+```
+python babbleapp.py
+```
+
+##### For subsequent runs make a script for these commands:
+```bash
+#!/bin/bash
+# cd wherever you installed
+cd ProjectBabble/BabbleApp
+source venv/bin/activate
+python babbleapp.py
+```
+---
+
 
 #### Notes on Linux:
 
@@ -81,19 +110,3 @@ brew install python-tk
 ```
 
 You can read more about this [here](https://stackoverflow.com/questions/25905540/importerror-no-module-named-tkinter) and [here](https://stackoverflow.com/questions/36760839/why-does-python-installed-via-homebrew-not-include-tkinter).
-
----
-
-##### udev
-
-If you have trouble connecting to your Babble Board (IE being denied permission to access it), you will need to set up and configure [udev](https://docs.platformio.org/en/latest/core/installation/udev-rules.html) rules.
-
-## Usage 
-We have integrations for [VRChat](https://docs.babble.diy/docs/software/integrations/vrc), [Resonite](https://docs.babble.diy/docs/software/integrations/resonite) and [ChilloutVR](https://docs.babble.diy/docs/software/integrations/chilloutVR)!
-
-Looking for something else? Check out our [documentation](https://docs.babble.diy/)!
-
-## Links
-- [Our Discord](https://discord.gg/XAMZmjBktk)
-- [Our Twitter](https://x.com/projectBabbleVR)
-- [Wandb Runs](https://wandb.ai/summerai/ProjectBabble)
