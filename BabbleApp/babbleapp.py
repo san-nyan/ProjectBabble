@@ -32,7 +32,7 @@ from osc import VRChatOSCReceiver, VRChatOSC
 from general_settings_widget import SettingsWidget
 from algo_settings_widget import AlgoSettingsWidget
 from calib_settings_widget import CalibSettingsWidget
-from utils.misc_utils import ensurePath, os_type, bg_color_highlight, bg_color_clear
+from utils.misc_utils import ensurePath, os_type, bg_color_highlight, bg_color_clear, text_color, font
 from lang_manager import LocaleStringManager as lang
 from logger import setup_logging
 from constants import UIConstants, AppConstants
@@ -213,6 +213,7 @@ async def async_main():
                 background_color=bg_color_clear,
                 default=(config.cam_display_id == Tab.CAM),
                 key=UIConstants.CAM_RADIO_NAME,
+                font=font,
             ),
             sg.Radio(
                 lang._instance.get_string("babble.settingsPage"),
@@ -220,6 +221,7 @@ async def async_main():
                 background_color=bg_color_clear,
                 default=(config.cam_display_id == Tab.SETTINGS),
                 key=UIConstants.SETTINGS_RADIO_NAME,
+                font=font,
             ),
             sg.Radio(
                 lang._instance.get_string("babble.algoSettingsPage"),
@@ -227,6 +229,7 @@ async def async_main():
                 background_color=bg_color_clear,
                 default=(config.cam_display_id == Tab.ALGOSETTINGS),
                 key=UIConstants.ALGO_SETTINGS_RADIO_NAME,
+                font=font,
             ),
             sg.Radio(
                 lang._instance.get_string("babble.calibrationPage"),
@@ -234,6 +237,7 @@ async def async_main():
                 background_color=bg_color_clear,
                 default=(config.cam_display_id == Tab.CALIBRATION),
                 key=UIConstants.CALIB_SETTINGS_RADIO_NAME,
+                font=font,
             ),
         ],
         [
@@ -272,7 +276,7 @@ async def async_main():
                 f'- - -  {lang._instance.get_string("general.windowFocus")}  - - -',
                 key="-WINFOCUS-",
                 background_color=bg_color_clear,
-                text_color="#F0F0F0",
+                text_color=text_color,
                 justification="center",
                 expand_x=True,
                 visible=False,
@@ -317,6 +321,7 @@ async def async_main():
 
 
 async def main_loop(window, config, cams, settings, thread_manager):
+    
     tint = AppConstants.DEFAULT_WINDOW_FOCUS_REFRESH
     fs = False
 
@@ -325,6 +330,7 @@ async def main_loop(window, config, cams, settings, thread_manager):
 
         if event in ("Exit", sg.WIN_CLOSED):
             # Exit code here
+            print("DEBUG: Closing window due to event:", event)
             for cam in cams:
                 cam.stop()
             thread_manager.shutdown_all()
@@ -338,8 +344,10 @@ async def main_loop(window, config, cams, settings, thread_manager):
                     fs = False
                     tint = AppConstants.DEFAULT_WINDOW_FOCUS_REFRESH
                     window[UIConstants.WINDOW_FOCUS_KEY].update(visible=False)
+                    print("DEBUG: Hiding focus indicator")
                     window[UIConstants.WINDOW_FOCUS_KEY].hide_row()
                     window.refresh()
+                    print("DEBUG: Window refreshed")
             else:
                 if not fs:
                     fs = True
@@ -417,7 +425,6 @@ async def main_loop(window, config, cams, settings, thread_manager):
 
         # Rather than await asyncio.sleep(0), yield control periodically
         await asyncio.sleep(0.001)  # Small sleep to allow other tasks to rundef main():
-    asyncio.run(async_main())
 
 
 def main():

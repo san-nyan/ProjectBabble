@@ -10,8 +10,11 @@ import subprocess
 import sounddevice as sd
 import soundfile as sf
 
-bg_color_highlight = "#424042"
-bg_color_clear = "#242224"
+bg_color_highlight = "#16161E"
+bg_color_clear = "#16161E"
+text_color = "#FFEFFE"
+button_color = "#0f0836"
+font = "fonts/tty/Hack-Regular.ttf"
 
 onnx_providers = [
     "DmlExecutionProvider",

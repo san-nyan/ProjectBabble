@@ -14,7 +14,10 @@ from utils.misc_utils import (
     get_camera_index_by_name,
     bg_color_highlight,
     bg_color_clear,
-    is_valid_int_input
+    button_color,
+    text_color,
+    is_valid_int_input,
+    font
 )
 from lang_manager import LocaleStringManager as lang
 
@@ -84,8 +87,6 @@ class CameraWidget:
             self.capture_queue,
             self.settings,
         )
-
-        button_color = "#539e8a"
         self.roi_layout = [
             [
                 sg.Button(
@@ -95,6 +96,7 @@ class CameraWidget:
                     tooltip=lang._instance.get_string(
                         "camera.selectEntireFrameTooltip"
                     ),
+                    font=font,
                 ),
             ],
             [
@@ -116,6 +118,7 @@ class CameraWidget:
                 sg.Text(
                     lang._instance.get_string("camera.rotation"),
                     background_color=bg_color_highlight,
+                    font=font,
                 ),
                 sg.Slider(
                     range=(0, 360),
@@ -136,23 +139,26 @@ class CameraWidget:
                         "camera.enableCalibrationTooltip"
                     ),
                     enable_events=True,
+                    font=font,
                 ),
             ],
             [
                 sg.Text(
                     f'{lang._instance.get_string("camera.mode")}:',
                     background_color=bg_color_highlight,
+                    font=font,
                 ),
                 sg.Text(
                     lang._instance.get_string("camera.calibrating"),
                     key=self.gui_mode_readout,
                     background_color=button_color,
+                    font=font,
                 ),
                 sg.Text(
-                    "", key=self.gui_tracking_fps, background_color=bg_color_highlight
+                    "", key=self.gui_tracking_fps, background_color=bg_color_highlight, font=font
                 ),
                 sg.Text(
-                    "", key=self.gui_tracking_bps, background_color=bg_color_highlight
+                    "", key=self.gui_tracking_bps, background_color=bg_color_highlight, font=font
                 ),
             ],
             [
@@ -162,6 +168,7 @@ class CameraWidget:
                     key=self.gui_vertical_flip,
                     background_color=bg_color_highlight,
                     tooltip=f'{lang._instance.get_string("camera.verticalFlipTooltip")}.',
+                    font=font,
                 ),
                 sg.Checkbox(
                     f'{lang._instance.get_string("camera.horizontalFlip")}:',
@@ -169,6 +176,7 @@ class CameraWidget:
                     key=self.gui_horizontal_flip,
                     background_color=bg_color_highlight,
                     tooltip=f'{lang._instance.get_string("camera.horizontalFlipTooltip")}:',
+                    font=font,
                 ),
             ],
             [sg.Image(filename="", key=self.gui_tracking_image)],
@@ -178,6 +186,7 @@ class CameraWidget:
                     key=self.gui_roi_message,
                     background_color=bg_color_highlight,
                     visible=False,
+                    font=font,
                 ),
             ],
         ]
@@ -187,6 +196,7 @@ class CameraWidget:
                 sg.Text(
                     lang._instance.get_string("camera.cameraAddress"),
                     background_color=bg_color_highlight,
+                    font=font,
                 ),
                 sg.InputCombo(
                     values=self.camera_list,
@@ -195,11 +205,13 @@ class CameraWidget:
                     tooltip=lang._instance.get_string("camera.cameraAddressTooltip"),
                     enable_events=True,
                     size=(20,0),
+                    font=font,
                 ),
                 sg.Button(
                     lang._instance.get_string("camera.refreshCameraList"),
                     key=self.gui_refresh_button,
                     button_color=button_color,
+                    font=font,
                 ),
             ],
             [
@@ -207,6 +219,7 @@ class CameraWidget:
                     lang._instance.get_string("camera.saveAndRestartTracking"),
                     key=self.gui_save_tracking_button,
                     button_color=button_color,
+                    font=font,
                 ),
             ],
             [
@@ -215,12 +228,14 @@ class CameraWidget:
                     key=self.gui_tracking_button,
                     button_color=button_color,
                     tooltip=f'{lang._instance.get_string("camera.trackingModeTooltip")}.',
+                    font=font,
                 ),
                 sg.Button(
                     lang._instance.get_string("camera.croppingMode"),
                     key=self.gui_roi_button,
                     button_color=button_color,
                     tooltip=f'{lang._instance.get_string("camera.croppingModeToolTip")}.',
+                    font=font,
                 ),
             ],
             [
@@ -372,7 +387,8 @@ class CameraWidget:
             if self.settings_config.use_calibration == True:
                 print(f'[{lang._instance.get_string("log.info")}] {lang._instance.get_string("info.enabled")}')
                 # Optionally, trigger BlendShapeCalibrator reset/init here if needed
-                playSound(os.path.join("Audio", "start.wav"))
+                print("playSound Muted for ear safety")
+                # playSound(os.path.join("Audio", "start.wav"))
             else:
                 print(f'[{lang._instance.get_string("log.info")}] {lang._instance.get_string("info.disabled")}')
                 # Stop calibration if it was running
@@ -427,7 +443,8 @@ class CameraWidget:
             ):  # Don't start recording if the calibration filter is disabled.
                 self.babble_cnn.calibration_frame_counter = None  # Disable old frame counter logic
                 # Optionally, trigger BlendShapeCalibrator reset/init here if needed
-                playSound(os.path.join("Audio", "start.wav"))
+                print("playSound Muted for ear safety")
+                # playSound(os.path.join("Audio", "start.wav"))
 
         # Calibration is now controlled by the checkbox only
 

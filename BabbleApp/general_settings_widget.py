@@ -4,7 +4,7 @@ from config import BabbleSettingsConfig
 from osc import Tab
 from queue import Queue
 from threading import Event
-from utils.misc_utils import bg_color_highlight, bg_color_clear, is_valid_int_input
+from utils.misc_utils import bg_color_highlight, bg_color_clear, is_valid_int_input, font, text_color
 
 class SettingsWidget:
     def __init__(
@@ -44,18 +44,24 @@ class SettingsWidget:
                     key=self.gui_update_check,
                     background_color=bg_color_highlight,
                     tooltip=lang._instance.get_string("general.toolTip"),
+                    font=font,
+                    text_color=text_color,
                 ),
             ],
             [
                 sg.Text(
                     f'{lang._instance.get_string("general.oscSettings")}:',
                     background_color=bg_color_clear,
+                    font=font,
+                    text_color=text_color,
                 ),
             ],
             [
                 sg.Text(
                     f'{lang._instance.get_string("general.locationPrefix")}:',
                     background_color=bg_color_highlight,
+                    font=font,
+                    text_color=text_color,
                 ),
                 sg.InputText(
                     self.config.gui_osc_location,
@@ -68,6 +74,8 @@ class SettingsWidget:
                 sg.Text(
                     f'{lang._instance.get_string("general.address")}:',
                     background_color=bg_color_highlight,
+                    font=font,
+                    text_color=text_color,
                 ),
                 sg.InputText(
                     self.config.gui_osc_address,
@@ -80,6 +88,8 @@ class SettingsWidget:
                 sg.Text(
                     f'{lang._instance.get_string("general.port")}:',
                     background_color=bg_color_highlight,
+                    font=font,
+                    text_color=text_color,
                 ),
                 sg.InputText(
                     self.config.gui_osc_port,
@@ -93,6 +103,8 @@ class SettingsWidget:
                 sg.Text(
                     f'{lang._instance.get_string("general.receiver")}',
                     background_color=bg_color_highlight,
+                    font=font,
+                    text_color=text_color,
                 ),
                 sg.Checkbox(
                     "",
@@ -101,12 +113,16 @@ class SettingsWidget:
                     background_color=bg_color_highlight,
                     size=(0, 10),
                     tooltip=f'{lang._instance.get_string("general.receiverTooltip")}.',
+                    font=font,
+                    text_color=text_color,
                 ),
             ],
             [
                 sg.Text(
                     f'{lang._instance.get_string("general.receiver")}:',
                     background_color=bg_color_highlight,
+                    font=font,
+                    text_color=text_color,
                 ),
                 sg.InputText(
                     self.config.gui_osc_receiver_port,
@@ -120,6 +136,8 @@ class SettingsWidget:
                 sg.Text(
                     f'{lang._instance.get_string("general.recalibrate")}:',
                     background_color=bg_color_highlight,
+                    font=font,
+                    text_color=text_color,
                 ),
                 sg.InputText(
                     self.config.gui_osc_recalibrate_address,
@@ -132,6 +150,8 @@ class SettingsWidget:
                 sg.Text(
                     f'{lang._instance.get_string("general.disableCameraPreview")}',
                     background_color=bg_color_highlight,
+                    font=font,
+                    text_color=text_color,
                 ),
                 sg.Checkbox(
                     "",
@@ -140,12 +160,16 @@ class SettingsWidget:
                     background_color=bg_color_highlight,
                     size=(0, 10),
                     tooltip=f'{lang._instance.get_string("general.disableCameraPreview")}.',
+                    font=font,
+                    text_color=text_color,
                 ),
             ],
             [
                 sg.Text(
                     f'{lang._instance.get_string("general.oscDelayEnable")}',
                     background_color=bg_color_highlight,
+                    font=font,
+                    text_color=text_color,
                 ),
                 sg.Checkbox(
                     "",
@@ -154,12 +178,16 @@ class SettingsWidget:
                     background_color=bg_color_highlight,
                     size=(0, 10),
                     tooltip=f'{lang._instance.get_string("general.oscDelayEnable")}.',
+                    font=font,
+                    text_color=text_color,
                 ),
             ],
             [
                 sg.Text(
                     f'{lang._instance.get_string("general.oscDelaySeconds")}:',
                     background_color=bg_color_highlight,
+                    font=font,
+                    text_color=text_color,
                 ),
                 sg.InputText(
                     self.config.gui_osc_delay_seconds,
@@ -172,12 +200,16 @@ class SettingsWidget:
                 sg.Text(
                     f'{lang._instance.get_string("general.uvcCameraSettings")}:',
                     background_color=bg_color_clear,
+                    font=font,
+                    text_color=text_color,
                 ),
             ],
             [
                 sg.Text(
                     f'{lang._instance.get_string("general.useRedChannel")}:',
                     background_color=bg_color_highlight,
+                    font=font,
+                    text_color=text_color,
                 ),
                 sg.Checkbox(
                     "",
@@ -186,10 +218,14 @@ class SettingsWidget:
                     background_color=bg_color_highlight,
                     size=(0, 10),
                     tooltip=f'{lang._instance.get_string("general.useRedChannelTooltip")}.',
+                    font=font,
+                    text_color=text_color,
                 ),
                 sg.Text(
                     f'{lang._instance.get_string("general.xResolution")}.',
                     background_color=bg_color_highlight,
+                    font=font,
+                    text_color=text_color,
                 ),
                 sg.InputText(
                     self.config.gui_cam_resolution_x,
@@ -203,6 +239,8 @@ class SettingsWidget:
                 sg.Text(
                     f'{lang._instance.get_string("general.yResolution")}.',
                     background_color=bg_color_highlight,
+                    font=font,
+                    text_color=text_color,
                 ),
                 sg.InputText(
                     self.config.gui_cam_resolution_y,
@@ -216,6 +254,8 @@ class SettingsWidget:
                 sg.Text(
                     f'{lang._instance.get_string("general.framerate")}:',
                     background_color=bg_color_highlight,
+                    font=font,
+                    text_color=text_color,
                 ),
                 sg.InputText(
                     self.config.gui_cam_framerate,
@@ -228,12 +268,16 @@ class SettingsWidget:
                 sg.Text(
                     f'{lang._instance.get_string("general.language")}:',
                     background_color=bg_color_clear,
+                    font=font,
+                    text_color=text_color,
                 ),
             ],
             [
                 sg.Text(
                     f'{lang._instance.get_string("general.languageInstructions")}.',
                     background_color=bg_color_highlight,
+                    font=font,
+                    text_color=text_color,
                 ),
             ],
             [
@@ -251,6 +295,8 @@ class SettingsWidget:
                 sg.Text(
                     f'{lang._instance.get_string("general.header")}:',
                     background_color=bg_color_clear,
+                    font=font,
+                    text_color=text_color,
                 ),
             ],
             [
