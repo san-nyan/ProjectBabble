@@ -4,7 +4,7 @@
 This is san-nyan's fork of <a href="https://github.com/Project-Babble/ProjectBabble">Project Babble</a>
 </h3>
 
-### On this fork the `main` branch is based off Project Babble's `autocalibrator` branch so it is based off 2.1.0 RC3 
+<h3 align="center">On this fork the <code>main</code> branch is based off Project Babble's <code>autocalibrator</code> branch so it is based off 2.1.0 RC3</h3>
 
 ---
 
