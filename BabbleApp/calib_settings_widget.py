@@ -6,7 +6,7 @@ from queue import Queue
 from threading import Event
 import numpy as np
 from calib_settings_values import set_shapes
-from utils.misc_utils import bg_color_highlight, bg_color_clear, is_valid_float_input
+from utils.misc_utils import bg_color_highlight, bg_color_clear, is_valid_float_input, font
 from lang_manager import LocaleStringManager as lang
 
 
@@ -71,10 +71,12 @@ class CalibSettingsWidget:
                 sg.Text(
                     f'{lang._instance.get_string("calibration.header")}:',
                     background_color=bg_color_clear,
+                    font=font,
                 ),
                 sg.Text(
                     f'{lang._instance.get_string("calibration.mode")}:',
                     background_color=bg_color_highlight,
+                    font=font,
                 ),
                 sg.OptionMenu(
                     self.calibration_list,
@@ -88,16 +90,19 @@ class CalibSettingsWidget:
                     lang._instance.get_string("calibration.left"),
                     expand_x=True,
                     justification="left",
+                    font=font,
                 ),
                 sg.Text(
                     lang._instance.get_string("calibration.shape"),
                     expand_x=True,
                     justification="center",
+                    font=font,
                 ),
                 sg.Text(
                     lang._instance.get_string("calibration.right"),
                     expand_x=True,
                     justification="right",
+                    font=font,
                 ),
             ],
             [
@@ -105,22 +110,26 @@ class CalibSettingsWidget:
                     lang._instance.get_string("calibration.min"),
                     expand_x=True,
                     justification="center",
+                    font=font,
                 ),
                 sg.Text(
                     lang._instance.get_string("calibration.max"),
                     expand_x=True,
                     justification="center",
+                    font=font,
                 ),
                 sg.HSeparator(pad=(50, 0)),
                 sg.Text(
                     lang._instance.get_string("calibration.max"),
                     expand_x=True,
                     justification="center",
+                    font=font,
                 ),
                 sg.Text(
                     lang._instance.get_string("calibration.min"),
                     expand_x=True,
                     justification="center",
+                    font=font,
                 ),
             ],
             [
@@ -139,12 +148,14 @@ class CalibSettingsWidget:
                     key=self.gui_reset_min,
                     button_color="#FF0000",
                     tooltip=lang._instance.get_string("calibration.resetMinTooltip"),
+                    font=font,
                 ),
                 sg.Button(
                     lang._instance.get_string("calibration.resetMax"),
                     key=self.gui_reset_max,
                     button_color="#FF0000",
                     tooltip=lang._instance.get_string("calibration.resetMaxTooltip"),
+                    font=font,
                 ),
             ],
         ]
@@ -177,6 +188,7 @@ class CalibSettingsWidget:
                 f"{shapename}Left/Right",
                 background_color=bg_color_highlight,
                 expand_x=True,
+                font=font,
             ),
             sg.InputText(
                 default_text=self.array[1][indexr],
@@ -184,6 +196,7 @@ class CalibSettingsWidget:
                 size=(8),
                 tooltip=lang._instance.get_string("calibration.maxRightValue"),
                 enable_events=True,
+                font=font,
             ),
             sg.InputText(
                 default_text=self.array[0][indexr],
@@ -191,6 +204,7 @@ class CalibSettingsWidget:
                 size=(8),
                 tooltip=lang._instance.get_string("calibration.minRightValue"),
                 enable_events=True,
+                font=font,
             ),
         ]
         return double_shape
@@ -204,6 +218,7 @@ class CalibSettingsWidget:
                 size=(8),
                 tooltip=lang._instance.get_string("calibration.minLeftValue"),
                 enable_events=True,
+                font=font,
             ),
             sg.InputText(
                 default_text=self.array[1][index],
@@ -211,8 +226,9 @@ class CalibSettingsWidget:
                 size=(8),
                 tooltip=lang._instance.get_string("calibration.maxLeftValue"),
                 enable_events=True,
+                font=font,
             ),
-            sg.Text(f"{shapename}", background_color=bg_color_highlight, expand_x=True),
+            sg.Text(f"{shapename}", background_color=bg_color_highlight, expand_x=True, font=font)
         ]
         return single_shape
 

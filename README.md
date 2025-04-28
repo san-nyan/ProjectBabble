@@ -19,6 +19,7 @@ This is san-nyan's fork of <a href="https://github.com/Project-Babble/ProjectBab
 ## Pros
 
 - Your ears will not die if you use Arch Linux
+- Larger Monospace font
 - Fancy colors wow babble discord server "why does your app look like that"
 - If you use this you are 14% cooler
 - You can dm me on discord (@__san) for support cause I will think you are 14% cooler instead of being intimidated by messaging a giant discord server
