@@ -39,20 +39,26 @@ You will need a [Python](https://www.python.org/downloads/) and [pip](https://pi
 ```bash
 git clone https://github.com/san-nyan/ProjectBabble && cd ProjectBabble/BabbleApp
 ```
+---
 
 ##### Make a venv and activate it:
 ```bash
 python -m venv venv && source venv/bin/activate
 ```
+---
 
 ##### Install the requirements for your system:
+Windows:
 ```bash
 pip install -r requirements-windows.txt
 ```
-or
+Linux:
 ```bash
 pip install -r requirements-linux.txt
 ```
+If you're using this tutorial to install the normal ProjectBabble you should still use one of my requirements files instead of the default included one as it is meant to be modified with a script before ran so go [here](https://github.com/san-nyan/ProjectBabble/tree/main/BabbleApp) and download the requirements file for your system, move it to the ProjectBabble/BabbleApp folder and then run the related above command
+
+---
 
 ##### Now you can run the app like this:
 ```
